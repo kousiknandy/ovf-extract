@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:vssd="http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_VirtualSystemSettingData"
+    xmlns:rasd="http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_ResourceAllocationSettingData"
+    xmlns:ovf="http://schemas.dmtf.org/ovf/envelope/1"
+    xmlns="http://schemas.dmtf.org/ovf/envelope/1"
+    xsi:schemaLocation="http://schemas.dmtf.org/ovf/envelope/1">
+     
+ 
+    <References>
+     
+    <!--
+        <File ovf:href="AbiquoCIB.qcow2" ovf:id="file1" ovf:size="4913673728" />
+        <File ovf:href="25/file" ovf:id="file1" ovf:size="4913673728" />
+    -->
+     
+        <File ovf:href="file-AbiquoCIB.qcow2" ovf:id="file1" ovf:size="4913673728" />
+    </References>
+     
+    <DiskSection>
+        <Info>List of Virtual Disks</Info>
+        <Disk
+            ovf:fileRef="file1"
+            ovf:diskId="disk1"
+            ovf:capacity="4294967296"
+            ovf:format="http://people.gnome.org/~markmc/qcow-image-format.html#monolithic_sparse" />
+    </DiskSection>
+     
+     
+    <VirtualSystem ovf:id="Abiquo - Flex machine">
+        <Info>A virtual machine</Info>
+         
+        <ProductSection>
+            <Info>Abiquo - Flex machine</Info>
+            <Product>Abiquo - Flex machine</Product>
+            <Icon ovf:fileRef="http://rs.bcn.abiquo.com:9000/public/icons/q.png" ovf:mimeType="image/jpeg" ovf:width="32" ovf:height="32" />        
+        </ProductSection>
+     
+        <VirtualHardwareSection>
+            <System>
+                <vssd:VirtualSystemType>abiquo</vssd:VirtualSystemType>
+            </System>
+            <Item>
+                <rasd:Caption>1 virtual CPUs</rasd:Caption>
+                <rasd:Description>Number of virtual CPUs</rasd:Description>
+                <rasd:InstanceId>1</rasd:InstanceId>
+                <rasd:ResourceType>3</rasd:ResourceType>
+                <rasd:VirtualQuantity>1</rasd:VirtualQuantity>
+            </Item>
+            <Item>
+                <rasd:Caption>2048 MB of memory RAM</rasd:Caption>
+                <rasd:Description>Memory Size</rasd:Description>
+                <rasd:InstanceId>2</rasd:InstanceId>
+                <rasd:ResourceType>4</rasd:ResourceType>
+                <rasd:AllocationUnits>MB</rasd:AllocationUnits>
+                <rasd:VirtualQuantity>2048</rasd:VirtualQuantity>
+            </Item>
+            <Item>
+                <rasd:Caption>Harddisk 0</rasd:Caption>
+                <rasd:InstanceId>11</rasd:InstanceId>
+                <rasd:ResourceType>17</rasd:ResourceType>
+                <rasd:HostResource>ovf:/disk/disk1</rasd:HostResource>
+            </Item>
+        </VirtualHardwareSection>
+    </VirtualSystem>
+     
+    <Section xsi:type="ovf:NetworkSection_Type">
+        <Info>List of networks</Info>
+        <Network ovf:name="Network 1">
+            <Description>The "Network 1" network</Description>
+        </Network>
+    </Section>
+</Envelope>
