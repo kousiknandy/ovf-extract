@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- VMControl generated OVF for KVM-based support. Version 2.4. VirtualSystemType - Linux:KVM -->
+<ovf:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns:ovf="http://schemas.dmtf.org/ovf/envelope/1" 
+xmlns="http://schemas.dmtf.org/ovf/envelope/1" 
+xmlns:rasd="http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_ResourceAllocationSettingData" 
+xmlns:vim="http://www.ibm.com/xmlns/ovf/extension/vim/2" 
+xmlns:vimkvmrasd="http://www.ibm.com/xmlns/ovf/extension/vim/2/kvm/1/rasd" 
+xmlns:vimrasd="http://www.ibm.com/xmlns/ovf/extension/vim/2/rasd" 
+xmlns:vimvssdkvm="http://www.ibm.com/xmlns/ovf/extension/vim/2/kvm/1/vssd" 
+xmlns:vssd="http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_VirtualSystemSettingData" 
+xsi:schemaLocation="http://www.ibm.com/xmlns/ovf/extension/vim/2 ibm-vim2_2.1.0.xsd 
+http://schemas.dmtf.org/ovf/envelope/1 dsp8023_1.0.0.xsd 
+http://www.ibm.com/xmlns/ovf/extension/vim/2/rasd ibm-vim2-rasd_2.1.0.xsd" xml:lang="en-US">
+  <ovf:References>
+    <ovf:File ovf:href="file:///root/ovf/osdiskSample.dsk" ovf:id="file1" ovf:size="8388608000"/>
+    <ovf:File ovf:href="file:///root/ovf/datadisk.img" ovf:id="file2" ovf:size="52428800"/>
+  </ovf:References>
+  <ovf:DiskSection>
+    <ovf:Info>List of Virtual Disks used by this package</ovf:Info>
+    <ovf:Disk ovf:capacity="8388608000" 
+ovf:capacityAllocationUnits="byte" 
+ovf:diskId="disk1" 
+ovf:fileRef="file1" 
+ovf:format="http://www.ibm.com/xmlns/ovf/diskformat/qemu.raw" 
+ovf:populatedSize="8388608000"/>
+    <ovf:Disk ovf:capacity="52428800" 
+ovf:capacityAllocationUnits="byte" 
+ovf:diskId="disk2" ovf:fileRef="file2" 
+ovf:format="http://www.ibm.com/xmlns/ovf/diskformat/qemu.raw" 
+ovf:populatedSize="52428800"/>
+  </ovf:DiskSection>
+  <ovf:NetworkSection>
+    <ovf:Info>This section describes the networks to which virtual network ports connect when deploying \
+the package
+    </ovf:Info>
+    <ovf:Network ovf:name="Discovered-breth0-0">
+      <ovf:Description>Network adapter 0 on Discovered-breth0-0</ovf:Description>
+    </ovf:Network>
+  </ovf:NetworkSection>
+  <ovf:VirtualSystem ovf:id="sampleKvmSys">
+    <ovf:Info>This section describes a virtual system to be created when deploying the package</ovf:Info>
+    <ovf:OperatingSystemSection ovf:required="true" ovf:id="36">
+      <ovf:Info>Guest Operating System</ovf:Info>
+      <ovf:Description>Linux</ovf:Description>
+    </ovf:OperatingSystemSection>
+    <ovf:ProductSection>
+      <ovf:Info>This section describes the OVF package itself.</ovf:Info>
+      <ovf:Product>sampleAppliance</ovf:Product>
+      <vim:Version>1.0</vim:Version>
+      <vim:Description>Sample KVM OVF. Full virtualized drivers (non-paravirtualization).</vim:Description>
+    </ovf:ProductSection>
+    <ovf:VirtualHardwareSection ovf:transport="iso">
+      <ovf:Info>This section describes the virtual hardware requirements on the target virtual system</ovf:Info>
+      <ovf:System>
+        <vssd:ElementName>VirtualSystem</vssd:ElementName>
+        <vssd:InstanceID>VirtualSystem</vssd:InstanceID>
+        <vssd:VirtualSystemType>Linux:KVM</vssd:VirtualSystemType>
+      </ovf:System>
+      <ovf:Item>
+        <rasd:AllocationUnits>KiloBytes</rasd:AllocationUnits>
+        <rasd:Caption>Memory Allocation</rasd:Caption>
+        <rasd:ConsumerVisibility>1</rasd:ConsumerVisibility>
+        <rasd:Description>Memory Allocation</rasd:Description>
+        <rasd:ElementName>Allocation of 819200 units of dedicated memory.</rasd:ElementName>
+        <rasd:InstanceID>1</rasd:InstanceID>
+        <rasd:ResourceType>4</rasd:ResourceType>
+        <rasd:VirtualQuantity>819200</rasd:VirtualQuantity>
+      </ovf:Item>
+      <ovf:Item>
+        <rasd:Caption>Processor Allocation</rasd:Caption>
+        <rasd:ConsumerVisibility>1</rasd:ConsumerVisibility>
+        <rasd:Description>Processor Allocation</rasd:Description>
+        <rasd:ElementName>Allocation of 1 processors.</rasd:ElementName>
+        <rasd:InstanceID>2</rasd:InstanceID>
+        <rasd:ResourceType>3</rasd:ResourceType>
+        <rasd:VirtualQuantity>1</rasd:VirtualQuantity>
+      </ovf:Item>
+      <ovf:Item>
+        <rasd:Caption>Generic disk controller</rasd:Caption>
+        <rasd:ElementName>Generic disk controller</rasd:ElementName>
+        <rasd:InstanceID>3</rasd:InstanceID>
+        <rasd:ResourceType>20</rasd:ResourceType>
+      </ovf:Item>
+      <ovf:Item>
+        <rasd:AddressOnParent>0</rasd:AddressOnParent>
+        <rasd:Caption>Virtual Disk Allocation</rasd:Caption>
+        <rasd:Description>8GB OS disk</rasd:Description>
+        <rasd:ElementName>Virtual Disk Allocation</rasd:ElementName>
+        <rasd:HostResource>ovf:/disk/disk1</rasd:HostResource>
+        <rasd:InstanceID>4</rasd:InstanceID>
+        <rasd:Parent>3</rasd:Parent>
+        <rasd:ResourceType>17</rasd:ResourceType>
+        <vimkvmrasd:DeviceVirtualizationSoftwareType>ide.hda</vimkvmrasd:DeviceVirtualizationSoftwareType>
+      </ovf:Item>
+      <ovf:Item>
+        <rasd:AddressOnParent>1</rasd:AddressOnParent>
+        <rasd:Caption>Virtual Disk Allocation</rasd:Caption>
+        <rasd:Description>50MB sample data disk</rasd:Description>
+        <rasd:ElementName>Virtual Disk Allocation</rasd:ElementName>
+        <rasd:HostResource>ovf:/disk/disk2</rasd:HostResource>
+        <rasd:InstanceID>5</rasd:InstanceID>
+        <rasd:Parent>3</rasd:Parent>
+        <rasd:ResourceType>17</rasd:ResourceType>
+        <vimkvmrasd:DeviceVirtualizationSoftwareType>ide.hdb</vimkvmrasd:DeviceVirtualizationSoftwareType>
+      </ovf:Item>
+      <ovf:Item>
+        <rasd:AutomaticAllocation>true</rasd:AutomaticAllocation>
+        <rasd:Caption>Ethernet Adapter Allocation</rasd:Caption>
+        <rasd:Connection>Discovered-breth0-0</rasd:Connection>
+        <rasd:ConsumerVisibility>1</rasd:ConsumerVisibility>
+        <rasd:Description>Ethernet Adapter Allocation 1</rasd:Description>
+        <rasd:ElementName>Network adapter 0 on Discovered-breth0-0</rasd:ElementName>
+        <rasd:InstanceID>6</rasd:InstanceID>
+        <rasd:ResourceType>10</rasd:ResourceType>
+      </ovf:Item>
+    </ovf:VirtualHardwareSection>
+    <ovf:ProductSection ovf:class="com.ibm.ovf.vim.2">
+      <ovf:Info>This product section provides information about the entire package.</ovf:Info>
+    </ovf:ProductSection>
+    <ovf:ProductSection ovf:class="com.ibm.ovf.vmcontrol.system">
+      <ovf:Info>General System Product Section</ovf:Info>
+      <ovf:Property ovf:key="timezone" ovf:type="string" ovf:userConfigurable="true" 
+       ovf:value="America/New_York">
+        <ovf:Label>Time zone setting for the virtual system</ovf:Label>
+        <ovf:Description>Time zone setting for the virtual system</ovf:Description>
+      </ovf:Property>
+    </ovf:ProductSection>
+    <ovf:ProductSection ovf:class="com.ibm.ovf.vmcontrol.system.networking">
+      <ovf:Info>System Level Networking</ovf:Info>
+      <ovf:Property ovf:key="hostname" ovf:type="string" ovf:userConfigurable="true" 
+       ovf:value="myguestserver">
+        <ovf:Label>Short host name for the system.</ovf:Label>
+        <ovf:Description>Short host name for the system.</ovf:Description>
+      </ovf:Property>
+      <ovf:Property ovf:key="domainname" ovf:type="string" ovf:userConfigurable="true" 
+       ovf:value="mycompany.com">
+        <ovf:Label>DNS domain name for the system.</ovf:Label>
+        <ovf:Description>DNS domain name for the system.</ovf:Description>
+      </ovf:Property>
+      <ovf:Property ovf:key="dnsIPaddresses" ovf:type="string" ovf:userConfigurable="true" ovf:value="">
+        <ovf:Label>IP addresses of DNS servers for system.</ovf:Label>
+        <ovf:Description>IP addresses of DNS servers for system.</ovf:Description>
+      </ovf:Property>
+      <ovf:Property ovf:key="ipv4defaultgateway" ovf:type="string" ovf:userConfigurable="true">
+        <ovf:Label>Default IPv4 gateway.</ovf:Label>
+        <ovf:Description>Default IPv4 gateway.</ovf:Description>
+      </ovf:Property>
+    </ovf:ProductSection>
+    <ovf:ProductSection ovf:class="com.ibm.ovf.vmcontrol.adapter.networking" ovf:instance="6">
+      <ovf:Info>Network adapter configuration for Network adapter 0 on Discovered-breth0-0</ovf:Info>
+      <ovf:Category>Internet Protocol Version 4</ovf:Category>
+      <ovf:Property ovf:key="ipv4addresses" ovf:type="string" ovf:userConfigurable="true">
+        <ovf:Label>Static IP address for the network adapter &quot;Network adapter 0 on Discovered-breth0-0&quot;.
+        </ovf:Label>
+        <ovf:Description>Static IP address for the network adapter &quot; \
+Network adapter 0 on Discovered-breth0-0&quot;.
+        </ovf:Description>
+      </ovf:Property>
+      <ovf:Property ovf:key="ipv4netmasks" ovf:type="string" ovf:userConfigurable="true" 
+       ovf:value="255.255.255.0">
+        <ovf:Label>Static network mask for network adapter &quot;Network adapter 0 on Discovered-breth0-0&quot;.
+        </ovf:Label>
+        <ovf:Description>Static network mask for network adapter &quot; \
+Network adapter 0 on Discovered-breth0-0&quot;.
+        </ovf:Description>
+      </ovf:Property>
+      <ovf:Property ovf:key="usedhcpv4" ovf:type="boolean" ovf:userConfigurable="true" ovf:value="false">
+        <ovf:Label>Use DHCP for network adapter &quot;Network adapter 0 on Discovered-breth0-0&quot;.
+        </ovf:Label>
+        <ovf:Description>Use DHCP for network adapter &quot; \
+Network adapter 0 on Discovered-breth0-0&quot;.
+        </ovf:Description>
+      </ovf:Property>
+      <ovf:Category>Internet Protocol Version 6</ovf:Category>
+      <ovf:Property ovf:key="ipv6addresses" ovf:type="string" ovf:userConfigurable="true" ovf:value="">
+        <ovf:Label>Static IP address for the network adapter &quot; \
+Network adapter 0 on Discovered-breth0-0&quot;.
+        </ovf:Label>
+        <ovf:Description>Static IP address for the network adapter &quot; \
+Network adapter 0 on Discovered-breth0-0&quot;.
+        </ovf:Description>
+      </ovf:Property>
+      <ovf:Property ovf:key="ipv6gateways" ovf:type="string" ovf:userConfigurable="true" ovf:value="">
+        <ovf:Label>Static default gateway for network adapter &quot; \
+Network adapter 0 on Discovered-breth0-0&quot;.
+        </ovf:Label>
+        <ovf:Description>Static default gateway for network adapter &quot; \
+Network adapter 0 on Discovered-breth0-0&quot;.
+        </ovf:Description>
+      </ovf:Property>
+      <ovf:Property ovf:key="useipv6autoconf" ovf:type="boolean" ovf:userConfigurable="true" ovf:value="false">
+        <ovf:Label>Use IPv6 stateless address autoconfiguration for network adapter &quot; \
+Network adapter 0 on Discovered-breth0-0&quot;.
+        </ovf:Label>
+        <ovf:Description>Use IPv6 stateless address autoconfiguration for network adapter &quot; \
+Network adapter 0 on Discovered-breth0-0&quot;.
+        </ovf:Description>
+      </ovf:Property>
+      <ovf:Category>Deployment use</ovf:Category>
+      <ovf:Property ovf:key="order" ovf:type="uint32" ovf:userConfigurable="false" ovf:value="0">
+        <ovf:Label>The adapter order for network adapter &quot;Network adapter 0 on 
+         Discovered-breth0-0&quot;.
+        </ovf:Label>
+        <ovf:Description>The adapter order for network adapter &quot;Network adapter 0 on 
+         Discovered-breth0-0&quot;.
+        </ovf:Description>
+      </ovf:Property>
+      <ovf:Property ovf:key="mac" ovf:type="string" ovf:userConfigurable="false" ovf:value="">
+        <ovf:Label>The MAC address for network adapter &quot;Network adapter 0 on 
+         Discovered-breth0-0&quot;.
+        </ovf:Label>
+        <ovf:Description>The MAC address for network adapter &quot;Network adapter 0 on  
+         Discovered-breth0-0&quot;.
+        </ovf:Description>
+      </ovf:Property>
+    </ovf:ProductSection>
+    <ovf:ProductSection ovf:class="com.ibm.ovf.vmcontrol.removeiso">
+      <ovf:Info>Remove ISO Product Section</ovf:Info>
+      <ovf:Property ovf:key="shutdown" ovf:type="boolean" ovf:userConfigurable="false" ovf:value="true">
+        <ovf:Label>Remove ISO after customization (requires shutdown)</ovf:Label>
+        <ovf:Description>Remove ISO after customization (requires shutdown)</ovf:Description>
+      </ovf:Property>
+    </ovf:ProductSection>
+  </ovf:VirtualSystem>
+</ovf:Envelope>
+
